@@ -1,0 +1,3222 @@
+ACTIONS
+     DISPLAY "Rekomendasi Wisata di Lombok"
+     FIND support
+     DISPLAY "Tempat wisata yang kami rekomendasi adalah : {support}."; 
+
+RULE 1
+     IF budget = kdr_7_juta
+     THEN pergi = tidak CNF 95;
+
+RULE 2
+     IF budget = ldr_7_juta
+     THEN pergi = ya CNF 95;
+
+RULE 3
+     IF pergi = tidak
+     THEN support = kerja_dulu CNF 100;
+
+RULE 4
+     IF pergi = ya and
+	makan_suka = ya and
+	makan_penting = ya
+     THEN kuliner = ya CNF 90;
+
+RULE 5
+     IF pergi = ya and
+	makan_suka = ya and
+	makan_penting = tidak
+     THEN kuliner = tidak CNF 40;
+
+RULE 6
+     IF pergi = ya and
+	makan_suka = tidak
+     THEN kuliner = tidak CNF 90;
+
+RULE 7
+     IF pergi = ya and
+	kuliner = tidak
+     THEN support = lanjut_ke_destinasi_wisata CNF 95;
+
+RULE 8
+     IF pergi = ya and
+	kuliner = ya and
+	larang_babi = ya
+     THEN babibgt = tidak CNF 100;
+
+RULE 9
+     IF pergi = ya and
+	kuliner = ya and
+	larang_babi = tidak and
+	ingin_babi = ya
+     THEN babibgt = ya CNF 85;
+
+RULE 10
+     IF pergi = ya and
+	kuliner = ya and
+	larang_babi = tidak and
+	ingin_babi = tidak
+     THEN babibgt = tidak;
+
+RULE 11
+     IF vege = tidak and
+	kacang = tidak 
+     THEN alergi = tidak_alergi;
+
+RULE 12
+     IF vege = tidak and
+	kacang = ya 
+     THEN alergi = alergi_kacang;
+
+RULE 13
+     IF vege = ya and
+	kacang = tidak 
+     THEN alergi = vege;	
+     
+RULE 14
+     IF vege = ya and
+	kacang = ya 
+     THEN alergi = vege_dan_kacang;
+
+RULE 15
+     IF tujuan = snack
+     THEN jenis_makanan = snack;
+
+RULE 16
+     IF tujuan = sarapan and
+	babibgt = tidak and
+	pref_diet = lokal
+     THEN jenis_makanan = sarapan_lokal;
+
+RULE 17
+     IF tujuan = sarapan and
+	babibgt = tidak and
+	pref_diet = barat
+     THEN jenis_makanan = sarapan_barat;
+
+RULE 18
+     IF tujuan = sarapan and
+	babibgt = ya 
+     THEN jenis_makanan = sarapan_babi;
+
+RULE 19
+     IF tujuan = makan_siang and
+	babibgt = tidak and
+	pref_diet = lokal
+     THEN jenis_makanan = siang_lokal;
+
+RULE 20
+     IF tujuan = makan_siang and
+	babibgt = tidak and
+	pref_diet = barat
+     THEN jenis_makanan = siang_barat;
+
+RULE 21
+     IF tujuan = makan_siang and
+	babibgt = ya 
+     THEN jenis_makanan = siang_babi;
+
+RULE 22
+     IF tujuan = makan_siang and
+	babibgt = tidak and
+	pref_diet = seafood
+     THEN jenis_makanan = siang_seafood;
+
+RULE 23
+     IF tujuan = makan_malam and
+	babibgt = tidak and
+	pref_diet = lokal
+     THEN jenis_makanan = malam_lokal;
+
+RULE 24
+     IF tujuan = makan_malam and
+	babibgt = tidak and
+	pref_diet = barat
+     THEN jenis_makanan = malam_barat;
+
+RULE 25
+     IF tujuan = makan_malam and
+	babibgt = ya 
+     THEN jenis_makanan = malam_babi;
+
+RULE 26
+     IF tujuan = makan_malam and
+	babibgt = tidak and
+	pref_diet = seafood
+     THEN jenis_makanan = malam_seafood;
+
+RULE 27
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = sate_bulayak;
+	
+RULE 28
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 29
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = no and
+	cara_makan = bakar
+     THEN support = A;
+
+RULE 30
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = no and
+	cara_makan = goreng
+     THEN support = B;
+
+RULE 31
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 32
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 33
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 34
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 35
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 36
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 37
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 38
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 39
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 40
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 41
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 42
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 43
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 44
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 45
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 46
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 47
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 48
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 49
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 50
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 51
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 52
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 53
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 54
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 55
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 56
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 57
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 58
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = sarapan_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 59
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 60
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 61
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 62
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 63
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 64
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 65
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 66
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 67
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 68
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 69
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 70
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 71
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 72
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 73
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 74
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 75
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 76
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 77
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 78
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 79
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 80
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 81
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 82
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 83
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_seafood and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 84
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_seafood and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 85
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_seafood and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 86
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_seafood and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 87
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_seafood and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 88
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_seafood and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 89
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_seafood and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 90
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = siang_seafood and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 91
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 92
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 93
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 94
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 95
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 96
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 97
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 98
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 99
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 100
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 101
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 102
+    IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 103
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 104
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 105
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 106
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 107
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_seafood and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 108
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_seafood and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 109
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_seafood and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 110
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_seafood and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 111
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_seafood and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 112
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_seafood and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 113
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_seafood and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 114
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_seafood and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 115
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 116
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 117
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 118
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 119
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 120
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 121
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 122
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = tidak_alergi and
+	jenis_makanan = malam_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 123
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 124
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 125
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 126
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 127
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 128
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 129
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 130
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 131
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 132
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 133
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 134
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 135
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 136
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 137
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 138
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 139
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 140
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 141
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 142
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 143
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 144
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 145
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 146
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 147
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 148
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 149
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 150
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 151
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 152
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 153
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 154
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 155
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 156
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 157
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 158
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 159
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 160
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 161
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 162
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 163
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 164
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 165
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 166
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 167
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 168
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 169
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 170
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 171
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 172
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 173
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 174
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 175
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 176
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 177
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 178
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 179
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = jagung_bakar;
+
+RULE 180
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = jagung_goreng;
+
+RULE 181
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_keju;
+
+RULE 182
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = gorengan;
+
+RULE 183
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = jagung_bakar;
+
+RULE 184
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = jagung_goreng;
+
+RULE 185
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_bakar;
+
+RULE 186
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = kentang_goreng;
+
+RULE 187
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = null_ay;
+
+RULE 188
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 189
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 190
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 191
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 192
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 193
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 194
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 195
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 196
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 197
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 198
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 199
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 200
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 201
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 202
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 203
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 204
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 205
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 206
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 207
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 208
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 209
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 210
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = sarapan_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 211
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 212
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 213
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 214
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 215
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 216
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 217
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 218
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 219
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 220
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 221
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 222
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 223
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 224
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 225
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 226
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 227
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 228
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 229
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 230
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 231
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 232
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 233
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 234
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 235
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_seafood and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 236
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_seafood and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 237
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_seafood and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 238
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_seafood and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 239
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_seafood and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 240
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_seafood and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 241
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_seafood and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 242
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = siang_seafood and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 243
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 244
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 245
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 246
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 247
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 248
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 249
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 250
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 251
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 252
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 253
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 254
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 255
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 256
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 257
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 258
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 259
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_seafood and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 260
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_seafood and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 261
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_seafood and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 262
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_seafood and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 263
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_seafood and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 264
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_seafood and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 265
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_seafood and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 266
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_seafood and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 267
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 268
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_babi and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 269
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 270
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_babi and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 271
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 272
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_babi and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 273
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 274
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = alergi_kacang and
+	jenis_makanan = malam_babi and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 275
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 276
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 277
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 278
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = snack and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 279
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 280
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 281
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 282
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = snack and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 283
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 284
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 285
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 286
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 287
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 288
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 289
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 290
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 291
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 292
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 293
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 294
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 295
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 296
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 297
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 298
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = sarapan_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 299
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 300
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 301
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 302
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 303
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 304
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 305
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 306
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 307
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 308
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 309
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 310
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 311
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 312
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 313
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 314
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = siang_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 315
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 316
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 317
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 318
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 319
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 320
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 321
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 322
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_lokal and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 323
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 324
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 325
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 326
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_barat and
+	pedas = ya and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 327
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 328
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = ya and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+RULE 329
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = bakar
+     THEN support = stick_kentang;
+
+RULE 330
+     IF pergi = ya and
+	kuliner = ya and
+	alergi = vege_dan_kacang and
+	jenis_makanan = malam_barat and
+	pedas = tidak and
+	ramai = tidak and
+	cara_makan = goreng
+     THEN support = stick_kentang;
+
+Ask budget: "Berapa anggaran liburan yang anda persiapkan? (diluar tiket)";
+CHOICES budget: kdr_7_juta, ldr_7_juta;
+
+Ask makan_suka: "Apakah anda hobi makan?";
+CHOICES makan_suka: ya, tidak;
+
+Ask makan_penting: "Apakah Anda cenderung mengutamakan makanan pada liburan anda?";
+CHOICES makan_penting: ya, tidak;
+
+Ask larang_babi: "Apakah ada larangan mengonsumsi babi?";
+CHOICES larang_babi: ya, tidak;
+
+Ask ingin_babi: "Apakah anda ingin makan mengandung unsur babi?";
+CHOICES ingin_babi: ya, tidak;
+
+Ask pref_diet: "Apakah preferensi diet anda?";
+CHOICES pref_diet: lokal, barat, seafood;
+
+Ask pedas: "Apakah anda ingin makanan pedas?";
+CHOICES pedas: ya, tidak;
+
+Ask tujuan: "Apakah jenis makanan yang anda ingin makan?";
+CHOICES tujuan: sarapan, makan_siang, makan_malam, snack;
+
+Ask vege: "Apakah anda vegetarian?";
+CHOICES vege: ya, tidak;
+
+Ask ramai: "Apakah anda menyukai tempat yang ramai?";
+CHOICES ramai: ya, tidak;
+
+Ask kacang: "Apakah anda memiliki alergi pada kacang?";
+CHOICES kacang: ya, tidak;
+
+Ask cara_makan: "dengan cara apa anda ingin makanan anda disajikan?";
+CHOICES cara_makan: bakar, goreng;
+
